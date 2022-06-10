@@ -1,0 +1,104 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html, body{
+    height: 100%;
+}
+body{
+    font-family: 'Fredoka One', cursive;
+    font-size: 15px;
+    color: rgb(81,37,21);
+    text-shadow: 5px 5px rgb(234,182,118);
+    background: url("assets/grass.png");
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    cursor: none;
+}
+
+.start{
+    display: flex;
+    font-size: 4em;
+    color: rgb(255,215,0);
+    text-shadow: 5px 5px rgb(234,182,118);
+} 
+.highscore{
+    font-size: 3em;
+}
+
+.top-board{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1.5em;
+}
+
+.score{
+    margin-right: 0.5em;
+}
+
+.timer{
+    margin-left: 0.5em;
+}
+
+.board{
+    height: 600px;
+    width: 600px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 80px;
+}
+.hole{
+    background-color: rgb(234,182,118);
+    border-radius: 50%;
+    box-shadow: inset 0 10px 0 7px rgb(81,37,21),
+                inset 0 20px 20px 15px rgba(0, 0, 0, .3),
+                0 0 5px rgba(0, 0, 0, .5);
+    position: relative;
+    overflow: hidden;
+}
+.hole .mole{
+    width: 70%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    animation: rise .3s ease-out;
+}
+
+.hole .rabbit{
+    width: 135%;
+    position: absolute;
+    left: 60%;
+    transform: translateX(-50%);
+    bottom: -40%;
+    animation: rise .3s ease-out;
+}
+
+@keyframes rise {
+    0%{
+        transform: translateX(-50%) translateY(100%);
+    }
+    100%{
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+.cursor{
+    height: 110px;
+    width: 100px;
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    background-image: url('assets/hammer.png');
+    background-size: 100% 100%;
+    transform: translate(-20%, -20%);
+    transition: transform .1s;
+    pointer-events: none;
+}
+.cursor.active{
+    transform: translate(-20%, -20%) rotate(-45deg);
+}
